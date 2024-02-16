@@ -1,0 +1,73 @@
+@font-face{
+    font-family:'digital-clock-font';
+    src: url('put_the_location_to_your_font.ttf or .otf');
+   }
+
+body {
+    background-color: #E59BA3;
+}
+
+* {
+    border-radius: 20px;
+    font-size: xx-large;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.calculator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    height: 600px;
+    aspect-ratio: 6 / 7;
+    background-color: #5ECCC8;
+}
+
+.screen {
+    width: 90%;
+    height: 100px;
+    background-color: white;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background-color: black;
+}
+
+.numbers-grid {
+    width: 90%;
+    height: 420px;
+    background-color:#5EA4CC;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    grid-template-rows: repeat(5 , 1fr);
+    grid-gap: 5px;
+    padding: 5px;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.white {
+    background-color: #5E8DCC;
+    border-radius: 0;
+    grid-row-start: 2;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    grid-template-rows: repeat(4 , 1fr);
+    border-radius: 0 20px 0 20px;
+    grid-gap: 5px;
+    padding: 5px;
+}
+
+.scr-text {
+    margin: 20px;
+}
