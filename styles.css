@@ -4,7 +4,7 @@
    }
 
 body {
-    background-color: #E59BA3;
+    background-color: #F0C0BF ;
 }
 
 * {
@@ -13,6 +13,8 @@ body {
     font-family: 'Orbitron', sans-serif;
 }
 
+
+
 .calculator {
     position: absolute;
     top: 50%;
@@ -20,7 +22,8 @@ body {
     transform:translate(-50%, -50%);
     height: 600px;
     aspect-ratio: 6 / 7;
-    background-color: #5ECCC8;
+    background-color: #346CAC ;
+    border: 2px solid black;
 }
 
 .screen {
@@ -29,8 +32,10 @@ body {
     background-color: white;
     margin: 20px auto;
     display: flex;
-    align-items: center;
-    justify-content: end;
+    justify-content: center;
+    align-items: end;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .divider {
@@ -68,6 +73,12 @@ body {
     padding: 5px;
 }
 
-.scr-text {
-    margin: 20px;
+.scr-text, .small-text {
+    margin: 0px;
+    margin-right:20px;
+}
+
+.small-text {
+    color: grey;
+    font-size: large;
 }
