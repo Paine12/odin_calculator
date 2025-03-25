@@ -1,4 +1,4 @@
-const p = document.querySelector(".scr-text")
+const bigText = document.querySelector(".scr-text")
 const smallText = document.querySelector('.small-text')
 
 const numbers = document.querySelectorAll('.numbers')
@@ -16,74 +16,116 @@ const clear = document.querySelector('.clear')
 
 const equals = document.querySelector('.equals')
 
-let val = '';
+let val
 
-let calc = 0;
+let x, y = null;
 
-function addNumber (value) {
-    val = val + value;
-    console.log(val);
-    p.textContent = val;
-}
 
 function delNumber () {
-    val = val.slice(0 , -1)
-    p.textContent = val;
+    x = null, y = null
+    bigText.innerHTML = '0'
+    smallText.innerHTML = '0'
+    val = null
 }
 
 function clearNum () {
-    val = '';
-    p.textContent = val;
-    smallText.textContent = calc;
+    x=null;
+    bigText.innerHTML = '0'
 }
 
 function addition() {
-    calc += Number(val);
-    alt = Number(val);
-    clearNum();
-
+    calc()
+    smallText.innerHTML = `${y} +`
+    bigText.innerHTML = ''
+    val = "addition"
+    x=null
 }
 
 function subtraction() {
-    calc -= Number(val);
-    alt = Number(val);
-    clearNum();
-
+    calc()
+    smallText.innerHTML = `${y} -`
+    bigText.innerHTML = ''
+    val = "subtraction"
+    x=null
 }
 
 function multiplication() {
-    calc *= Number(val);
-    alt = Number(val);
-    clearNum();
+    calc()
+    smallText.innerHTML = `${y} *`
+    bigText.innerHTML = ''
+    val = "multiplication"
+    x=null
 
 }
 
 function divide() {
-    calc /= Number(val);
-    alt = Number(val);
-    clearNum();
+    calc()
+    smallText.innerHTML = `${y} /`
+    bigText.innerHTML = ''
+    val = "divide"
+    x=null
 
 }
 
 function power() {
-    calc += Math.pow(calc, val);
-    alt = Number(val);
-    clearNum();
+    calc()
+    smallText.innerHTML = `${y} ^`
+    bigText.innerHTML = ''
+    val = "power"
+    x=null
+}
 
+function calc() {
+    if (val != null) {
+        if (val == 'addition') {
+            y += x
+            bigText.innerHTML = y;
+        }
+        else if (val == 'subtraction') {
+            y -= x
+            bigText.innerHTML = y;
+
+        }
+        else if (val == 'multiplication') {
+            y *= x
+            bigText.innerHTML = y;
+            
+        }
+        else if (val == 'divide') {
+            y /= x
+            bigText.innerHTML = y;
+        
+        }
+        else if (val == 'power') {
+            y = Math.pow(y, x)
+            bigText.innerHTML = y;
+
+        }
+    }
+    if (y == null) {
+        smallText.innerHTML = x
+        y = x
+    }
+    
+    smallText.innerHTML = ''
+    val = null
 }
 
 
 
 del.addEventListener("click", delNumber);
 
-clear.addEventListener("click", () => {
-    clearNum();
-    calc = 0;
-    smallText.textContent = calc;
-})
+clear.addEventListener("click", clearNum)
 
 numbers.forEach(blob => {
-    blob.addEventListener("click",() => addNumber(blob.id))
+    blob.addEventListener("click",() => {
+        if (x==null){
+            x = parseInt(blob.id)
+        }
+        else x = x*10 + parseInt(blob.id)
+        bigText.innerHTML = x
+        console.log(x)
+    })
 });
 
 additionButton.addEventListener("click", addition)
@@ -96,8 +138,4 @@ dividerButton.addEventListener("click", divide)
 
 powerButton.addEventListener("click", power)
 
-equals.addEventListener("click", () => {
-    val = calc;
-    p.textContent = val;
-    smallText.textContent = ''
-})
+equals.addEventListener("click", calc)
